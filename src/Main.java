@@ -9,6 +9,20 @@ public class Main {
 
     }
 }
+// given an unsorted arrary of intervals of whole # times (effectively a multi-dimensional array) such as [5,10],
+// determine is a person could go to all meetings, such that no intervals overlap
+// if 'intervals' == null, return trrue
+//Arrays.sort(Interrvals, new Comparatorr<int[]>(), where .sort method variant with two elements passes the
+// collection to be sorrted and the comparator in a lamba expreession that defines how the collection will be sorted by overriding
+// compare(int[] a, int[] b) --> return a[0] - b[0]. this method retunrs -1,0,1 depending on if index 0 for array 'a' is <>= than
+// value an index 0 of array 'b' where each inteerval is a 2-element array. this effectively sorts the intervals least to
+// greatest based on first int in the interval but doees not assess for overlap
+// define a previous interval via int[] preev = inteerrvals [0]
+// for looop goes through all intervals, assigns int[] curr = intervals[i] and assesses if
+// prev[1] > curr[0] to check overlap. return false if overrlap.
+// redefine prev = curr @ end of each loop
+// retunr true if arrray traverrsed with no overlap foound
+
 
 //concept of sorting the intervals and then checking for: intervalOne[a][b] vs intervalTwo[a][b]
 // if intervalOne[b] > intervalTwo[a] --> false, else true
@@ -24,10 +38,6 @@ class Solution {
             public int compare(int[] a, int[] b) { // accepts two arrays (intervals) from the multidimensional array
                 return a[0] - b[0]; // compares the first number of the interval. could either sort by ending time or
                 // starting time. Compare returns -1,0,1 depending on lesser, equal or greater.
-                // does this just effecetively specify the way in which an multi-dimensional array is sorted since we
-                // can select either sorting by first value or second?
-                // dario says this is using a lambda expression?? basically, this Comparator allows me to define an
-                // anonymous function which states how the compare method should sort the passed collection
             }
         }); // at this point, 'intervals[][]' has been sorted by index 0
         int[] prev = intervals[0]; // prev is set to the interval at index 0
